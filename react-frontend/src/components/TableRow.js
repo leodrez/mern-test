@@ -11,10 +11,10 @@ class TableRow extends Component {
           {this.props.obj.item}
         </td>
         <td>
-          <button className="btn btn-primary">Edit</button>
+          <button>Edit</button>
         </td>
         <td>
-          <button className="btn btn-danger">Delete</button>
+          <button>Delete</button>
         </td>
       </tr>
     );
