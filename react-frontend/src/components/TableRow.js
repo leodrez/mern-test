@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ItemService from './ItemService';
 
 class TableRow extends Component {
+  constructor(props) {
+    super(props);
+    this.addItemService = new ItemService();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.addItemService.deleteData(this.props.obj._id);
+  }
+
   render() {
     return (
     <div>
@@ -12,16 +24,15 @@ class TableRow extends Component {
         <td>
           {this.props.obj.item}
         </td>
+        <Link to={"/edit/"+this.props.obj._id}>
+          Edit
+        </Link>
         <td>
-          <button>Edit</button>
-        </td>
-        <td>
-          <button>Delete</button>
+          <form onSubmit={ this.handleSubmit }>
+            <input type='submit' value='Delete' /> 
+          </form>
         </td>
       </tr>
-      <Link to={"/edit/"+this.props.obj._id} className="btn btn-primary">
-        Edit
-      </Link>
       </div>
     );
   }
