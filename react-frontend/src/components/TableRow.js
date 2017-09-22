@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class TableRow extends Component {
   render() {
     return (
+    <div>
       <tr>
         <td>
           {this.props.obj._id}
@@ -17,6 +19,10 @@ class TableRow extends Component {
           <button>Delete</button>
         </td>
       </tr>
+      <Link to={"/edit/"+this.props.obj._id} className="btn btn-primary">
+        Edit
+      </Link>
+      </div>
     );
   }
 }
