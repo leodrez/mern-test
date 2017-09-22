@@ -8,7 +8,7 @@ class EditItem extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8080/items/edit/'+this.props.match.params.id);
+    axios.get('http://localhost:8080/items/edit/'+this.props.match.params.id)
     .then(response => {
       this.setState({ items: response.data }); 
     })
