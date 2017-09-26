@@ -6,14 +6,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost:27017/mern')
-  .then(() => {
-    console.log('Connected to DB'); 
-  })
-  .then(err => {
-    console.error(err);
-    process.exit(1);
-  });
+const dbpromise = mongoose.connect('mongodb://localhost:27017/mern', {
+  useMongoClient: true
+});
+dbpromise.then(() => {
+  console.log('Connected to DB'); 
+});
 
 const itemRouter = require('./src/routes/itemRouter');
 

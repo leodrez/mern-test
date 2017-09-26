@@ -14,7 +14,7 @@ class EditItem extends Component {
   componentDidMount() {
     axios.get('http://localhost:8080/items/edit/'+this.props.match.params.id)
     .then(response => {
-      this.setState({ items: response.data }); 
+      this.setState({ value: response.data }); 
     })
     .catch(function (error) {
       console.log(error); 
@@ -29,7 +29,7 @@ class EditItem extends Component {
     event.preventDefault();
     this.addItemService.updateData(this.state.value,
     this.props.match.params.id);
-    this.props.history.push('/index');
+    this.props.history.push('/');
   }
 
   render() {
@@ -38,7 +38,7 @@ class EditItem extends Component {
         <form onSubmit={ this.handleSubmit }>
           <label>
             Edit Item:
-            <input type="text" value={this.state.value.item}
+            <input type="text" value={this.state.items.item}
             onChange={ this.handleChange } />
           </label><br/>
             <input type="submit" value="Update" />

@@ -5,7 +5,7 @@ const itemRouter = express.Router();
 let Item = require('../models/Item');
 
 itemRouter.route('/add/post').post(function (req, res) {
-  let Item = new Item(req.body);
+  let item = new Item(req.body);
   item.save()
   .then(item => {
     res.json('Item added successfully'); 
